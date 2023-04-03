@@ -7,7 +7,7 @@ import { logo, menu, close } from '../assets';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
-  navLinks.map((link) => console.log(link.id, link.title));
+  const [toggle, setToggle] = useState(false);
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center py-5 fixed top-0 z-20 bg-primary`}>
@@ -25,7 +25,7 @@ const Navbar = () => {
             <span className='sm:block hidden'>| Full-Stack Developer</span>
           </p>
         </Link>
-
+        {/* Navbar */}
         <ul className='list-none hidden sm:flex flex-row gap-10'>
           {navLinks.map((nav) => (
             <li
@@ -36,6 +36,10 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        {/* Mobile menu */}
+        <div className='sm:hidden flex flex-1 justify-end items-center'>
+          <img className='w-[28px] h-[28px] object-contain cursor-pointer' src={toggle ? close : menu} alt={menu} onClick={() => setToggle(!toggle)} />
+        </div>
       </div>
     </nav>
   );
