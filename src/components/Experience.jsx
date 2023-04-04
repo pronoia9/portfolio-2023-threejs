@@ -1,7 +1,9 @@
+import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import { motion } from 'framer-motion';
 
 import 'react-vertical-timeline-component/style.min.css';
+
 import { styles } from '../styles';
 import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
@@ -9,7 +11,7 @@ import { textVariant } from '../utils/motion';
 
 const ExperienceCard = ({ experience }) => (
   <VerticalTimelineElement
-    contentStyle={{ background: '#1d1836', color: '#fff' }}
+    contentStyle={{ background: '#1d1836', color: '#fff', }}
     contentArrowStyle={{ borderRight: '7px solid  #232631' }}
     date={experience.date}
     iconStyle={{ background: experience.iconBg }}
@@ -26,7 +28,7 @@ const ExperienceCard = ({ experience }) => (
     </div>
     <ul className='mt-5 list-disc ml-5 space-y-2'>
       {experience.points.map((point, index) => (
-        <li className='text-white-100 text-[14px] pl-1 tracking-wider' key={index}>
+        <li key={`experience-point-${index}`} className='text-white-100 text-[14px] pl-1 tracking-wider'>
           {point}
         </li>
       ))}
@@ -38,14 +40,14 @@ const Experience = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>What I Have Done So Far</p>
-        <h2 className={styles.sectionHeadText}>Work Experience.</h2>
+        <p className={`${styles.sectionSubText} text-center`}>What I have done so far</p>
+        <h2 className={`${styles.sectionHeadText} text-center`}>Work Experience.</h2>
       </motion.div>
 
-      <div className='mt-2 flex flex-col'>
+      <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
-          {experiences.map((experience, idx) => (
-            <ExperienceCard key={idx} experience={experience} />
+          {experiences.map((experience, index) => (
+            <ExperienceCard key={`experience-${index}`} experience={experience} />
           ))}
         </VerticalTimeline>
       </div>
@@ -53,4 +55,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, 'experience');
+export default SectionWrapper(Experience, 'work');
