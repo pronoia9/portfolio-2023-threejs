@@ -22,8 +22,8 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
       </div>
 
       <div className='mt-5'>
-        <h3>{name}</h3>
-        <p>{description}</p>
+        <h3 className='text-white font-bold text-[24px]'>{name}</h3>
+        <p className='mt-2 text-secondary text-[14px]'>{description}</p>
       </div>
     </Tilt>
   </motion.div>
