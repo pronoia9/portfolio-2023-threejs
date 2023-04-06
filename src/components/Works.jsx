@@ -8,9 +8,14 @@ import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const Works = () => {
-  return <>
-
-  </>;
+  return (
+    <>
+      <motion.div variants={textVariant()}>
+        <p className={styles.sectionSubText}>Some of my work</p>
+        <h2 className={styles.sectionHeadText}>Projects.</h2>
+      </motion.div>
+    </>
+  );
 };
 
 export default SectionWrapper(Works, '');
