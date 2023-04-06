@@ -1,11 +1,13 @@
-import { Tilt } from "react-tilt";
-import { motion } from "framer-motion";
+import { Tilt } from 'react-tilt';
+import { motion } from 'framer-motion';
 
-import { styles } from "../styles";
-import { github } from "../assets";
-import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { styles } from '../styles';
+import { github } from '../assets';
+import { SectionWrapper } from '../hoc';
+import { projects } from '../constants';
+import { fadeIn, textVariant } from '../utils/motion';
+
+const ProjectCard = () => <></>
 
 const Works = () => {
   return (
@@ -21,6 +23,12 @@ const Works = () => {
           briefly described with links to code repositories and live demos in it. It reflects my ability to solve complex
           problems, work with different technologies, and manage projects effectively.
         </motion.p>
+      </div>
+
+      <div className='mt-20 flex flex-wrap gap-7'>
+        {projects.map((project, index) => (
+          <ProjectCard key={`project-${index}`}></ProjectCard>
+        ))}
       </div>
     </>
   );
