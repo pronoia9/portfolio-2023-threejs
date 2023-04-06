@@ -26,4 +26,4 @@ const Feedbacks = () => {
   );
 };
 
-export default Feedbacks;
+export default SectionWrapper(Feedbacks, '');
