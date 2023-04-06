@@ -12,6 +12,11 @@ const ProjectCard = ({ index, name, description, tags, image, source_code_link }
     <Tilt className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full' options={{ max: 45, scale: 1, speed: 450 }}>
       <div className='relative w-full h-[230px]'>
         <img className='w-full h-full object-cover rounded-2xl' src={image} alt={name} />
+        <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
+          <div className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer' onClick={() => window.open(source_code_link, '_blank')}>
+            <img className='w-1/2 h-1/2' src={github} alt='github' />
+          </div>
+        </div>
       </div>
     </Tilt>
   </motion.div>
