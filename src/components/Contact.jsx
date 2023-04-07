@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import emailjS from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 
 import { styles } from '../styles';
 import { EarthCanvas } from './canvas';
@@ -21,7 +21,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    emailjS
+    emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE,
         import.meta.env.VITE_EMAILJS_TEMPLATE,
@@ -30,20 +30,21 @@ const Contact = () => {
       )
       .then(
         () => {
-          alert('Thank you, I will get back to you as soon as possible.');
+          alert('Thank you. I will get back to you as soon as possible.');
           setForm({ name: '', email: '', message: '' });
         },
         (error) => {
-          console.log(error);
-          alert('Something went wrong.');
+          console.error(error);
+
+          alert('Ahh, something went wrong. Please try again.');
         }
       );
     setLoading(false);
   };
 
   return (
-    <div className='xl:mt-12 xl:flex-row flex-col-reverse flex gap-10 overflow-hidden'>
-      <motion.div className='flex-[0.75] bg-black-100 p-8 rounded-xl' variants={slideIn('left', 'tween', 0.2, 1)}>
+    <div className='xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden'>
+      <motion.div className='flex-[0.75] bg-black-100 p-8 rounded-2xl' variants={slideIn('left', 'tween', 0.2, 1)}>
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
@@ -67,14 +68,14 @@ const Contact = () => {
               name='email'
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your email?"
+              placeholder="What's your email address?"
             />
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Message</span>
             <textarea
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-              rows='7'
+              rows={7}
               name='message'
               value={form.message}
               onChange={handleChange}
@@ -83,14 +84,14 @@ const Contact = () => {
           </label>
 
           <button
-            className='bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold-shadow-md shadow-primary rounded-xl'
+            className='bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold shadow-md shadow-primary rounded-xl'
             type='submit'>
             {loading ? 'Sending...' : 'Send'}
           </button>
         </form>
       </motion.div>
 
-      <motion.div className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]' variants={slideIn('right', 'tween', 0.2, 1)}>
+      <motion.div lassName='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]' variants={slideIn('right', 'tween', 0.2, 1)} c>
         <EarthCanvas />
       </motion.div>
     </div>
