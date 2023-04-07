@@ -12,8 +12,8 @@ const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => { };
-  
+  const handleChange = (e) => {};
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -24,7 +24,41 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
 
-        <form className='mt-12 flex flex-col gap-8' ref={formRef} onSubmit={handleSubmit}></form>
+        <form className='mt-12 flex flex-col gap-8' ref={formRef} onSubmit={handleSubmit}>
+          <label className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Your Name</span>
+            <input
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              type='text'
+              name='name'
+              value={form.name}
+              onChange={handleChange}
+              placeholder="What's your name?"
+            />
+          </label>
+          <label className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Your Email</span>
+            <input
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              type='email'
+              name='email'
+              value={form.email}
+              onChange={handleChange}
+              placeholder="What's your email?"
+            />
+          </label>
+          <label className='flex flex-col'>
+            <span className='text-white font-medium mb-4'>Your Message</span>
+            <textarea
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+              rows='7'
+              name='message'
+              value={form.message}
+              onChange={handleChange}
+              placeholder="What do you want to say?"
+            />
+          </label>
+        </form>
       </motion.div>
     </div>
   );
