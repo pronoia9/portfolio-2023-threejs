@@ -19,6 +19,26 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    emailjS
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE,
+        import.meta.env.VITE_EMAILJS_TEMPLATE,
+        { from_name: form.name, to_name: 'Jay', from_email: form.email, to_email: 'contact@me.com', message: form.message },
+        import.meta.env.VITE_EMAILJS_USER
+      )
+      .then(
+        () => {
+          alert('Thank you, I will get back to you as soon as possible.');
+          setForm({ name: '', email: '', message: '' });
+        },
+        (error) => {
+          console.log(error);
+          alert('Something went wrong.');
+        }
+      );
+    setLoading(false);
   };
 
   return (
