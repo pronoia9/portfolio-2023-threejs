@@ -55,10 +55,20 @@ const Contact = () => {
               name='message'
               value={form.message}
               onChange={handleChange}
-              placeholder="What do you want to say?"
+              placeholder='What do you want to say?'
             />
           </label>
+
+          <button
+            className='bg-tertiary py-3 px-8 outline-none w-fit text-white font-bold-shadow-md shadow-primary rounded-xl'
+            type='submit'>
+            {loading ? 'Sending...' : 'Send'}
+          </button>
         </form>
+      </motion.div>
+
+      <motion.div className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]' variants={slideIn('right', 'tween', 0.2, 1)}>
+        <EarthCanvas />
       </motion.div>
     </div>
   );
