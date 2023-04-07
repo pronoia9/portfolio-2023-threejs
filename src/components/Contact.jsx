@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import emailjS from '@emailjs/browser';
 
 const Contact = () => {
-  return (
-    <div>Contact</div>
-  )
-}
+  return <div>Contact</div>;
+};
 
-export default Contact
+export default Contact;
