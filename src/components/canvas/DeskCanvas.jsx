@@ -3,7 +3,8 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload } from '@react-three/drei';
 // import { TextureLoader } from 'three/src/loaders/TextureLoader';
 import { EffectComposer, DepthOfField, Bloom } from '@react-three/postprocessing';
-import { Leva, useControls, folder } from 'leva';
+import { useControls, folder } from 'leva';
+
 import CanvasLoader from '../Loader';
 import Desk from './desk/Desk';
 
@@ -26,18 +27,7 @@ const DeskCanvas = () => {
     };
   }, []);
 
-  const levaSettings = {
-    // theme={myTheme} // you can pass a custom theme (see the styling section)
-    // fill // default = false,  true makes the pane fill the parent dom node it's rendered in
-    flat: true, // default = false,  true removes border radius and shadow
-    oneLineLabels: true, // default = false, alternative layout for labels, with labels and fields on separate rows
-    // hideTitleBar // default = false, hides the GUI header
-    // collapsed // default = false, when true the GUI is collpased
-    // hidden // default = false, when true the GUI is hidden
-  };
-
   const steps = { min: -10, max: 10, step: 0.001 };
-
   const cameraValues = useControls('Camera', {
     fov: { value: 25, min: 0, max: 100 },
     position: folder(
@@ -72,9 +62,6 @@ const DeskCanvas = () => {
 
   return (
     <>
-      {/* GUI Configuration */}
-      <Leva />
-
       <Canvas
         frameloop='demand'
         shadows
