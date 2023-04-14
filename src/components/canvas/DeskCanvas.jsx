@@ -84,7 +84,7 @@ const DeskCanvas = () => {
             rotation={[sceneValues.sceneRotX, sceneValues.sceneRotY, sceneValues.sceneRotZ]}
             scale={sceneValues.sceneScale}>
             {/* Desk */}
-            <Desk isMobile={isMobile} />
+            <Desk />
           </group>
 
           {/* Postrocessing */}
